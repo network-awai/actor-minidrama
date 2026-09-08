@@ -31,7 +31,7 @@
          DOUGAKA_DIR       dougaka engine checkout (produce-episode.bb 既定)"
   (:require [clojure.data.json :as json]
             [clojure.java.io :as io]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [minidrama.aozora :as aozora]
             [minidrama.cacao :as cacao]
             [minidrama.phase :as phase]

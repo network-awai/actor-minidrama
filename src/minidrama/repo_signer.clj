@@ -22,7 +22,7 @@
   secp256k1 is not available from SunEC on JDK 16+ (verified: JDK 21 answers
   \"Curve not supported: secp256k1\"), so this uses BouncyCastle."
   (:require [clojure.java.io :as io]
-            [clojure.string :as str])
+            [kotoba.lang.text :as str])
   (:import [java.security MessageDigest SecureRandom]
            [java.math BigInteger]
            [org.bouncycastle.asn1.sec SECNamedCurves]
