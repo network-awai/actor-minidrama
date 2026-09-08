@@ -16,7 +16,7 @@
   ANNOUNCEMENT here still sits behind the DramaGovernor + phase/approval gate
   (minidrama.operation) — phase 2 public requires the per-episode :publish
   approval (ADR-2607071300 gate ④)."
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [minidrama.cacao :as cacao]
             [minidrama.repo-signer :as repo-signer]
             [minidrama.publisher :as publisher])
@@ -33,7 +33,7 @@
   [{:keys [url method headers body]}]
   (let [b (HttpRequest/newBuilder (URI/create url))]
     (doseq [[k v] headers] (.header b k v))
-    (let [req  (-> b (.method (str/upper-case (name (or method :post)))
+    (let [req  (-> b (.method (str/upper (name (or method :post)))
                              (if body
                                (HttpRequest$BodyPublishers/ofString body)
                                (HttpRequest$BodyPublishers/noBody)))
