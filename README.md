@@ -106,9 +106,9 @@ DramaGovernor + フォーマット不変条件を全数検証される — **gov
 split of duties）。drama pipeline（LLM 提案・governor・生成・publish）は
 OFF-MESH の JVM actor に残し、mesh guest は identity/liveness のみ扱う:
 
-- `mesh/drama_profile.clj` — `on-http /minidrama/profile` で actor の
+- `mesh/drama_profile.cljk` — `on-http /minidrama/profile` で actor の
   identity record（handle / did / registry）を応答し、profile datom を assert
-- `mesh/drama_heartbeat.clj` — `on-tick` 毎時、resident-liveness datom を
+- `mesh/drama_heartbeat.cljk` — `on-tick` 毎時、resident-liveness datom を
   append（fleet Datom log に as-of 履歴が残る）
 
 deploy は murakumo 側から: `kotoba-lang/murakumo` の `murakumo.app.edn` に
@@ -117,12 +117,12 @@ fleet app として登録済み — `bb murakumo deploy mesh/minidrama.app.edn <
 
 ## Related files
 
-- `src/minidrama/operation.cljc` — StateGraph
-- `src/minidrama/governor.cljc` — DramaGovernor
-- `src/minidrama/advisor.cljc` — DramaLLM (mock ‖ Murakumo LLM)
-- `src/minidrama/store.cljc` — Store (MemStore ‖ DatomicStore)
-- `src/minidrama/publisher.cljc` — Publisher (Mock ‖ aozora follow-up)
-- `src/minidrama/phase.cljc` — phase 0 draft / 1 unlisted / 2 public+approval
+- `src/minidrama/operation.cljk` — StateGraph
+- `src/minidrama/governor.cljk` — DramaGovernor
+- `src/minidrama/advisor.cljk` — DramaLLM (mock ‖ Murakumo LLM)
+- `src/minidrama/store.cljk` — Store (MemStore ‖ DatomicStore)
+- `src/minidrama/publisher.cljk` — Publisher (Mock ‖ aozora follow-up)
+- `src/minidrama/phase.cljk` — phase 0 draft / 1 unlisted / 2 public+approval
 - `docs/adr/0001-architecture.md` — repo-local design note
 - `mesh/minidrama.app.edn` — ON-MESH surface manifest (reside facet)
-- `mesh/drama_profile.clj` / `mesh/drama_heartbeat.clj` — kotoba-clj mesh guests
+- `mesh/drama_profile.cljk` / `mesh/drama_heartbeat.cljk` — kotoba-clj mesh guests
