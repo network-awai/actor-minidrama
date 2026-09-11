@@ -10,10 +10,10 @@
   `minidrama.aozora`. This entrypoint proves the real-LLM → governor →
   (mock) announce path against the live Murakumo model.
 
-  Usage: clojure -M:dev -m minidrama.deploy \"<theme>\" [duration-seconds]
-         clojure -M:dev -m minidrama.deploy identify-live
-         clojure -M:dev -m minidrama.deploy register-handle
-         clojure -M:dev -m minidrama.deploy create-account
+  Usage: kbb -M:dev -m minidrama.deploy \"<theme>\" [duration-seconds]
+         kbb -M:dev -m minidrama.deploy identify-live
+         kbb -M:dev -m minidrama.deploy register-handle
+         kbb -M:dev -m minidrama.deploy create-account
   Env:   MINIDRAMA_OLLAMA_URL (default http://127.0.0.1:11434)
          MINIDRAMA_OLLAMA_MODEL (default gemma-4-E4B qat)"
   (:require [clojure.data.json :as json]
@@ -70,7 +70,7 @@
   "Live identify test: generate the actor's self-sovereign did:key, then
   createSession(self-CACAO)→JWT→createRecord a profile record to
   pds.aozora.app. Proves the app-aozora-pds auth flow for minidrama.
-  clojure -M:dev -m minidrama.deploy identify-live"
+  kbb -M:dev -m minidrama.deploy identify-live"
   []
   (let [id  (cacao/load-or-create-identity! ".minidrama/identity.edn")
         pub (aozora/aozora-publisher {:pds        "https://pds.aozora.app"
@@ -95,7 +95,7 @@
   own did:key on the PDS via com.atproto.identity.updateHandle. After this,
   resolveHandle returns the did:key (not the did:web fallback) and the appview
   attributes the actor's real records to the friendly handle.
-  clojure -M:dev -m minidrama.deploy register-handle"
+  kbb -M:dev -m minidrama.deploy register-handle"
   []
   (let [id (cacao/load-or-create-identity! ".minidrama/identity.edn")]
     (println "actor did:key :" (:did id))
@@ -114,7 +114,7 @@
   "createAccount 昇格 (ADR-2607071700 follow-up): persist the actor's
   `:atproto.account/*` datom on the PDS with a fresh self-CACAO proof, so
   getAccount answers for minidrama.aozora.app (account-store 整合).
-  clojure -M:dev -m minidrama.deploy create-account"
+  kbb -M:dev -m minidrama.deploy create-account"
   []
   (let [id (cacao/load-or-create-identity! ".minidrama/identity.edn")]
     (println "actor did:key :" (:did id))
