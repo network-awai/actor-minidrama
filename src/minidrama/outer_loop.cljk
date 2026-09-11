@@ -24,8 +24,8 @@
   (hand-authored designs still pass the DramaGovernor via the design-advisor,
   ADR-2607071300). MINIDRAMA_USE_LLM=1 is the deploy-wired LLM path instead.
 
-  Usage: clojure -M:dev -m minidrama.outer-loop            run once
-         clojure -M:dev -m minidrama.outer-loop status     ticks + consumption
+  Usage: kbb -M:dev -m minidrama.outer-loop            run once
+         kbb -M:dev -m minidrama.outer-loop status     ticks + consumption
   Env:   MINIDRAMA_PHASE   0 draft / 1 unlisted / 2 public (default 2 —
                            ADR-2607162200 scheduled operation)
          DOUGAKA_DIR       dougaka engine checkout (produce-episode.bb 既定)"

@@ -35,4 +35,4 @@ video エンジン（dougaka エンジン）への発注書。
   store/sim) — `.clj` は JVM-only I/O（将来の cacao / aozora publisher）のみ。
 - actor 自身の Ed25519 identity は `.minidrama/identity.edn`（gitignored）—
   NEVER commit a private key。
-- `clojure -M:lint`（clj-kondo, errors fail）/ `clojure -M:dev:test`。
+- `kbb -M:lint`（clj-kondo, errors fail）/ `kbb -M:dev:test`。

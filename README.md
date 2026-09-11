@@ -64,9 +64,9 @@ SOFT → commit + タグ: `:low-confidence`
 ## Run
 
 ```bash
-clojure -M:lint       # clj-kondo (errors fail)
-clojure -M:dev:test   # cognitect test-runner
-clojure -M:dev:run    # offline demo (mock advisor/publisher, MemStore)
+kbb -M:lint       # clj-kondo (errors fail)
+kbb -M:dev:test   # cognitect test-runner
+kbb -M:dev:run    # offline demo (mock advisor/publisher, MemStore)
 
 # theme 一発でミニドラマを製造 (actor→dougaka engine→announce, ADR-2607071500):
 bb scripts/produce-episode.bb --theme "屋上のラジオ体操" --duration 48            # preview (mp4 まで)
@@ -112,8 +112,8 @@ OFF-MESH の JVM actor に残し、mesh guest は identity/liveness のみ扱う
   append（fleet Datom log に as-of 履歴が残る）
 
 deploy は murakumo 側から: `kotoba-lang/murakumo` の `murakumo.app.edn` に
-fleet app として登録済み — `bb murakumo deploy mesh/minidrama.app.edn <node>`
-（1回）または `bb reconcile murakumo.app.edn --apply`（宣言的収束）。
+fleet app として登録済み — `kbb -M:murakumo deploy mesh/minidrama.app.edn <node>`
+（1回）または `kbb -M:reconcile murakumo.app.edn --apply`（宣言的収束）。
 
 ## Related files
 

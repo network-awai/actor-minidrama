@@ -1,4 +1,4 @@
-#!/usr/bin/env bb
+#!/usr/bin/env kbb
 ;; produce-episode — theme 一発でミニドラマを製造する orchestrator
 ;; (ADR-2607071300/2607071500 の「pipeline 発注の自動化」の完成形)。
 ;;
@@ -72,15 +72,15 @@
       out-dir (str here "/.minidrama/episodes/" id)]
   (println "=== 1/3 plan (minidrama actor: DramaLLM ⊣ DramaGovernor) ===")
   (run! here (if plan-src
-               ["clojure" "-M:dev" "-m" "minidrama.produce" "--from" plan-src]
-               (cond-> ["clojure" "-M:dev" "-m" "minidrama.produce" theme id]
+               ["kbb" "-M:dev" "-m" "minidrama.produce" "--from" plan-src]
+               (cond-> ["kbb" "-M:dev" "-m" "minidrama.produce" theme id]
                  duration (conj duration))))
   (println "=== 2/3 produce (dougaka engine: keyframes → ffmpeg) ===")
-  (run! dougaka ["clojure" "-M:dev" "-m" "dougaka.pipeline" plan-file out-dir])
+  (run! dougaka ["kbb" "-M:dev" "-m" "dougaka.pipeline" plan-file out-dir])
   (let [mp4 (str out-dir "/" id ".mp4")]
     (if (or announce? unlisted?)
       (do (println "=== 3/3 announce (uploadBlob → app.aozora.embed.video → /videos) ===")
-          (run! here ["clojure" "-M:dev" "-m" "minidrama.announce" mp4 id title
+          (run! here ["kbb" "-M:dev" "-m" "minidrama.announce" mp4 id title
                       (if unlisted? "unlisted" "public")])
           (println "done:" id (if unlisted? "(unlisted preview)" "→ https://aozora.app/videos")))
       (do (println "=== preview (no --announce) ===")

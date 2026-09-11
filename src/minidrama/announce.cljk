@@ -11,7 +11,7 @@
   the operator verification entrypoint (owner-driven), mirroring
   deploy/identify-live.
 
-  Usage: clojure -M:dev -m minidrama.announce <episode.mp4> [episode-id] [title]"
+  Usage: kbb -M:dev -m minidrama.announce <episode.mp4> [episode-id] [title]"
   (:require [clojure.data.json :as json]
             [clojure.java.io :as io]
             [minidrama.aozora :as aozora]
@@ -91,7 +91,7 @@
 
 (defn -main [& [path episode-id title visibility]]
   (when-not (and path (.exists (io/file path)))
-    (binding [*out* *err*] (println "usage: clojure -M:dev -m minidrama.announce <episode.mp4> [episode-id] [title] [public|unlisted]"))
+    (binding [*out* *err*] (println "usage: kbb -M:dev -m minidrama.announce <episode.mp4> [episode-id] [title] [public|unlisted]"))
     (System/exit 1))
   (let [id (cacao/load-or-create-identity! ".minidrama/identity.edn")
         episode-id (or episode-id "demo-1")

@@ -1,7 +1,7 @@
 (ns minidrama.sim
   "Offline demo: drive two sample episode themes (one clean, one over-budget)
   through the minidrama actor on a MemStore + mock advisor + mock publisher
-  (no network). `clojure -M:dev:run`."
+  (no network). `kbb -M:dev:run`."
   (:require [langgraph.graph :as g]
             [minidrama.operation :as op]
             [minidrama.store :as store]
