@@ -18,7 +18,7 @@
             元の入れ子データへ戻す)
   Env:   MINIDRAMA_USE_LLM=1     use the Murakumo LLM advisor (deploy's wiring)
          MINIDRAMA_OLLAMA_URL / MINIDRAMA_OLLAMA_MODEL   as in minidrama.deploy"
-  (:require [clojure.edn :as edn]
+  (:require [kotoba.lang.edn :as edn]
             [clojure.java.io :as io]
             [langgraph.graph :as g]
             [minidrama.advisor :as advisor]
