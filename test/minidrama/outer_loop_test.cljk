@@ -1,7 +1,7 @@
 (ns minidrama.outer-loop-test
   "Pure-function coverage for the scheduled loop's dedup + lease semantics
   (repo ADR-0002 / superproject ADR-2607162200)."
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [minidrama.outer-loop :as ol]))
 
 (def ^:private tick {:id "creatortick/minidrama/2026-07-16/0"

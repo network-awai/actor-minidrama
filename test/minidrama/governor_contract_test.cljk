@@ -5,7 +5,7 @@
   asset / budget / rate-limit are held — recorded in the ledger, never
   committed, never announced), and PUBLIC announcement (phase 2) additionally
   requires the explicit :publish approval (ADR-2607071300 gate ④)."
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [langgraph.graph :as g]
             [minidrama.store :as store]
             [minidrama.advisor :as advisor]
