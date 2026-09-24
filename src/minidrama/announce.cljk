@@ -12,7 +12,7 @@
   deploy/identify-live.
 
   Usage: kbb -M:dev -m minidrama.announce <episode.mp4> [episode-id] [title]"
-  (:require [clojure.data.json :as json]
+  (:require [kotoba.json :as json]
             [clojure.java.io :as io]
             [minidrama.aozora :as aozora]
             [minidrama.cacao :as cacao]
