@@ -29,8 +29,8 @@
   Env:   MINIDRAMA_PHASE   0 draft / 1 unlisted / 2 public (default 2 —
                            ADR-2607162200 scheduled operation)
          DOUGAKA_DIR       dougaka engine checkout (produce-episode.bb 既定)"
-  (:require [clojure.data.json :as json]
-            [clojure.java.io :as io]
+  (:require [kotoba.json :as json]
+            [kotoba.io :as io]
             [kotoba.lang.text :as str]
             [minidrama.aozora :as aozora]
             [minidrama.cacao :as cacao]
@@ -100,9 +100,9 @@
 (defn catalog-designs
   "episodes/*.edn catalog slugs (sorted) — the scheduled loop drains these."
   []
-  (->> (.listFiles (io/file "episodes"))
-       (filter #(str/ends-with? (.getName ^java.io.File %) ".edn"))
-       (map #(str/replace (.getName ^java.io.File %) #"\.edn$" ""))
+  (->> (io/list-files (io/file "episodes"))
+       (filter #(str/ends-with? (io/file-name %) ".edn"))
+       (map #(str/replace (io/file-name %) #"\.edn$" ""))
        sort vec))
 
 (defn published-posts

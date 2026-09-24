@@ -6,7 +6,7 @@
   InvalidSignature with no hint which of the three it was. These pin the shapes
   so a regression shows up here instead of as an actor that quietly stops
   federating."
-  (:require [kotoba.test :refer [deftest is testing]]
+  (:require [kotoba.bytes :as kbytes] [kotoba.test :refer [deftest is testing]]
             [minidrama.repo-signer :as rs])
   (:import [java.io File]))
 
@@ -43,8 +43,8 @@
 
 (deftest signature-is-compact-64-byte-low-s
   (let [k (rs/load-or-create-key! (tmp-key-path))
-        raw (fn [msg] (.decode (java.util.Base64/getDecoder)
-                               ^String (rs/sign-compact k (.getBytes ^String msg "UTF-8"))))]
+        raw (fn [msg] (kbytes/base64-decode-bytes
+                               ^String (rs/sign-compact k (kbytes/utf8-bytes ^String msg))))]
     (testing "64-byte compact r||s, not DER"
       (let [s (raw "hello")]
         (is (= 64 (alength s)))

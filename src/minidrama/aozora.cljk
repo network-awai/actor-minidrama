@@ -16,7 +16,7 @@
   ANNOUNCEMENT here still sits behind the DramaGovernor + phase/approval gate
   (minidrama.operation) — phase 2 public requires the per-episode :publish
   approval (ADR-2607071300 gate ④)."
-  (:require [kotoba.lang.text :as str]
+  (:require [kotoba.bytes :as kbytes] [kotoba.lang.text :as str]
             [minidrama.cacao :as cacao]
             [minidrama.repo-signer :as repo-signer]
             [minidrama.publisher :as publisher])
@@ -258,7 +258,7 @@
         prep (post "app.aozora.repo.prepareWrite"
                    (cond-> {:repo repo :collection collection :action "create" :record record}
                      rkey (assoc :rkey rkey)))
-        unsigned (.decode (java.util.Base64/getDecoder) ^String (get prep "unsigned"))
+        unsigned (kbytes/base64-decode-bytes ^String (get prep "unsigned"))
         sig  (repo-signer/sign-compact signer unsigned)
         done (post "app.aozora.repo.commitSigned"
                    {:repo repo :collection collection :rkey (get prep "rkey")

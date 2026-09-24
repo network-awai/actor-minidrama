@@ -19,7 +19,7 @@
   Env:   MINIDRAMA_USE_LLM=1     use the Murakumo LLM advisor (deploy's wiring)
          MINIDRAMA_OLLAMA_URL / MINIDRAMA_OLLAMA_MODEL   as in minidrama.deploy"
   (:require [kotoba.lang.edn :as edn]
-            [clojure.java.io :as io]
+            [kotoba.io :as io]
             [langgraph.graph :as g]
             [minidrama.advisor :as advisor]
             [minidrama.deploy :as deploy]
