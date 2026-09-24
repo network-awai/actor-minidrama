@@ -2,7 +2,7 @@
   "Doctrine tests: empty theme → :noop proposal → :no-actuation hold;
   low-confidence plans still commit, tagged :low-confidence (transparency,
   not a block)."
-  (:require [clojure.test :refer [deftest is]]
+  (:require [kotoba.test :refer [deftest is]]
             [langgraph.graph :as g]
             [minidrama.store :as store]
             [minidrama.advisor :as advisor]

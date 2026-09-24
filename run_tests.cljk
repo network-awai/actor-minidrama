@@ -2,7 +2,7 @@
   "Test runner for com-etzhayyim-minidrama (new actors ship run_tests.cljk, not
   .sh — per etzhayyim/root CLAUDE.md). Canonical path: `kbb -M:dev:test`
   (cognitect test-runner). This runner: `kbb -M -m minidrama.run-tests`."
-  (:require [clojure.test :refer [run-tests]]
+  (:require [kotoba.test :refer [run-tests]]
             [minidrama.governor-contract-test]
             [minidrama.store-contract-test]
             [minidrama.operation-test]

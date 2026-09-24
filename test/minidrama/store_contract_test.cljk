@@ -1,7 +1,7 @@
 (ns minidrama.store-contract-test
   "MemStore ≡ DatomicStore — the same episode + ledger facts committed to both
   backends must read back identically (the Store is a swap, not a rewrite)."
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [minidrama.store :as store]))
 
 (deftest mem-and-datomic-stores-agree
