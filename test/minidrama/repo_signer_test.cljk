@@ -6,7 +6,7 @@
   InvalidSignature with no hint which of the three it was. These pin the shapes
   so a regression shows up here instead of as an actor that quietly stops
   federating."
-  (:require [kotoba.bytes :as kbytes] [kotoba.test :refer [deftest is testing]]
+  (:require [kotoba.lang.error :as kerror] [kotoba.bytes :as kbytes] [kotoba.test :refer [deftest is testing]]
             [minidrama.repo-signer :as rs])
   (:import [java.io File]))
 
@@ -68,6 +68,6 @@
     ;; out of listRepos with nothing logged anywhere.
     (let [p (tmp-key-path)]
       (spit p "")
-      (is (thrown? clojure.lang.ExceptionInfo (rs/load-or-create-key! p)))
+      (is (thrown? kerror/ExceptionInfo (rs/load-or-create-key! p)))
       (spit p "not-hex")
-      (is (thrown? clojure.lang.ExceptionInfo (rs/load-or-create-key! p))))))
+      (is (thrown? kerror/ExceptionInfo (rs/load-or-create-key! p))))))
