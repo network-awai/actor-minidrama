@@ -1,4 +1,4 @@
-# com-etzhayyim-minidrama
+# actor-minidrama
 
 minidrama (ミニドラマ座) — 縦型ミニドラマ制作 actor。core contract は
 `README.md`、pattern は full-repo `../../../CLAUDE.md` "Actors" 節
